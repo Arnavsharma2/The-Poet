@@ -24,8 +24,28 @@
         </svg>
         Reading Mode
       </button>
+      <button class="summary-button" (click)="toggleSummary()" [disabled]="isLoadingSummary" title="Generate AI summary">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="!isLoadingSummary">
+          <path d="M3 4H17M3 8H17M3 12H13M3 16H10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="spinner-small" *ngIf="isLoadingSummary"></div>
+        <span>{{ showSummary && summary ? 'Hide' : 'Summary' }}</span>
+      </button>
     </div>
     <div class="poem-content" [class.reading-mode-active]="isReadingMode">
+      <div *ngIf="showSummary" class="summary-section">
+        <div *ngIf="isLoadingSummary" class="summary-loading">
+          <div class="spinner-small"></div>
+          <p>Generating summary...</p>
+        </div>
+        <div *ngIf="summaryError" class="summary-error">
+          <p>{{ summaryError }}</p>
+        </div>
+        <div *ngIf="summary && !isLoadingSummary && !summaryError" class="summary-content">
+          <h4>Summary</h4>
+          <p>{{ summary }}</p>
+        </div>
+      </div>
       <p *ngFor="let line of poem.lines; trackBy: trackByIndex" class="poem-line" [innerHTML]="highlightText(line || ' ')"></p>
     </div>
     <div class="poem-actions-bottom" *ngIf="isReadingMode">

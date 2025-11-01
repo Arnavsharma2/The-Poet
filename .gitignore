@@ -1,3 +1,7 @@
+.env
+.env.local
+.env.*.local
+
 # Compiled output
 /dist
 /tmp
@@ -8,23 +12,28 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+*.log
+yarn.lock
+pnpm-lock.yaml
 
 # IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# Visual Studio Code
+.idea/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
+.history/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
 
 # Miscellaneous
 /.angular
@@ -35,6 +44,24 @@ yarn-error.log
 testem.log
 /typings
 
-# System files
+# Build artifacts
+*.tsbuildinfo
+*.js.map
+*.d.ts.map
+
+# Cache directories
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vite/
+turbo/
+
+# OS files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db

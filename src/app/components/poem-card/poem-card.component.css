@@ -167,6 +167,15 @@
   }
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .poem-line {
   margin: 0.75rem 0;
   font-size: 1.125rem;
@@ -252,6 +261,99 @@ mark {
   flex-shrink: 0;
 }
 
+.summary-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(106, 90, 205, 0.1);
+  border: 2px solid #6a5acd;
+  border-radius: 8px;
+  color: #6a5acd;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.summary-button:hover:not(:disabled) {
+  background: #6a5acd;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(106, 90, 205, 0.3);
+}
+
+.summary-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.summary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.summary-button svg {
+  flex-shrink: 0;
+}
+
+.spinner-small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(106, 90, 205, 0.2);
+  border-top: 2px solid #6a5acd;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.summary-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(106, 90, 205, 0.05) 0%, rgba(106, 90, 205, 0.1) 100%);
+  border: 2px solid rgba(106, 90, 205, 0.2);
+  border-radius: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+.summary-loading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #6a5acd;
+  font-weight: 500;
+}
+
+.summary-loading .spinner-small {
+  width: 20px;
+  height: 20px;
+  border-width: 3px;
+}
+
+.summary-error {
+  color: #cc4a1f;
+  font-weight: 500;
+}
+
+.summary-error p {
+  margin: 0;
+}
+
+.summary-content h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #6a5acd;
+  letter-spacing: -0.01em;
+}
+
+.summary-content p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #2a2a2a;
+  font-style: italic;
+}
+
 @media (max-width: 768px) {
   .poem-card {
     padding: 1.25rem;
@@ -292,8 +394,25 @@ mark {
     height: 18px;
   }
 
-  .reading-mode-button {
+  .reading-mode-button,
+  .summary-button {
     padding: 0.625rem 1.25rem;
     font-size: 0.875rem;
+  }
+
+  .poem-actions {
+    flex-direction: column;
+  }
+
+  .summary-section {
+    padding: 1rem;
+  }
+
+  .summary-content h4 {
+    font-size: 1rem;
+  }
+
+  .summary-content p {
+    font-size: 0.9375rem;
   }
 }

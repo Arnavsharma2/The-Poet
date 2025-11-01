@@ -6,4 +6,5 @@ An Angular application for discovering and exploring poetry. Search by author or
 - Search poems by author or title
 - Reading mode for efficient poetry reading
 - Search term highlighting
+- AI-powered summaries powered by Google Gemini
 - Mobile-friendly

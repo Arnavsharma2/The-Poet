@@ -13,6 +13,7 @@ import { Poem } from '../../models/poem.interface';
 export class PoemListComponent {
   @Input() poems: Poem[] = [];
   @Input() searchTerm: string = '';
+  @Input() geminiApiKey: string = '';
 
   trackByPoem(index: number, poem: Poem): string {
     return `${poem.title}-${poem.author}`;

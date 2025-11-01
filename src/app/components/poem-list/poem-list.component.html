@@ -10,7 +10,7 @@
   
   <div *ngIf="poems.length > 0" class="poem-grid">
     <div *ngFor="let poem of poems; trackBy: trackByPoem; let i = index" class="poem-card-wrapper">
-      <app-poem-card [poem]="poem" [searchTerm]="searchTerm"></app-poem-card>
+      <app-poem-card [poem]="poem" [searchTerm]="searchTerm" [geminiApiKey]="geminiApiKey"></app-poem-card>
     </div>
   </div>
 </div>

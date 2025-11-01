@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SearchComponent } from './components/search/search.component';
 import { PoemListComponent } from './components/poem-list/poem-list.component';
 import { Poem } from './models/poem.interface';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class App {
   poems: Poem[] = [];
   errorMessage: string = '';
   currentSearchTerm: string = '';
+  geminiApiKey: string = environment.geminiApiKey;
 
   onPoemsFound(data: { poems: Poem[]; searchTerm: string }): void {
     this.poems = data.poems;
