@@ -1,0 +1,299 @@
+.poem-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 2px solid #ff6b35;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.15);
+  position: relative;
+  z-index: 10;
+}
+
+.poem-card.expanded {
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.poem-card.reading-mode {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+}
+
+.poem-card:hover {
+  transform: translateY(-2px);
+  border-color: #ff8c5a;
+  box-shadow: 0 6px 30px rgba(255, 107, 53, 0.25);
+}
+
+.poem-card.expanded:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(255, 107, 53, 0.3);
+}
+
+.poem-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.poem-header:hover {
+  opacity: 0.9;
+}
+
+.poem-card.expanded .poem-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #ff6b35;
+}
+
+.poem-header-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.poem-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+}
+
+.poem-card.expanded .poem-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.poem-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.poem-author {
+  font-size: 1.125rem;
+  color: #ff6b35;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.01em;
+}
+
+.poem-linecount {
+  font-size: 0.875rem;
+  color: #666666;
+  background: #f8f9fa;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  border: 1px solid #e0e0e0;
+}
+
+.poem-preview {
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  color: #888888;
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.expand-button {
+  background: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  color: #666666;
+}
+
+.expand-button:hover {
+  background: #ff6b35;
+  border-color: #ff6b35;
+  color: #ffffff;
+}
+
+.expand-button:active {
+  transform: scale(0.95);
+}
+
+.expand-icon {
+  transition: transform 0.3s ease;
+  color: currentColor;
+}
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.poem-body {
+  line-height: 2;
+  color: #333333;
+  animation: fadeIn 0.3s ease;
+  padding-top: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.poem-line {
+  margin: 0.75rem 0;
+  font-size: 1.125rem;
+  font-family: 'Georgia', 'Palatino', 'Times New Roman', serif;
+  white-space: pre-wrap;
+  letter-spacing: 0.01em;
+  color: #1a1a1a;
+  line-height: 1.9;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.poem-content.reading-mode-active {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.poem-content.reading-mode-active .poem-line {
+  font-size: 1.5rem;
+  line-height: 2.5;
+  margin: 1.25rem 0;
+  color: #2a2a2a;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-family: 'Georgia', 'Palatino', 'Times New Roman', serif;
+}
+
+@media (max-width: 768px) {
+  .poem-content.reading-mode-active .poem-line {
+    font-size: 1.25rem;
+    line-height: 2.2;
+  }
+}
+
+mark {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.3) 0%, rgba(255, 140, 90, 0.3) 100%);
+  color: #cc4a1f;
+  font-weight: 600;
+  padding: 0.125rem 0.25rem;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(255, 107, 53, 0.2);
+}
+
+.poem-actions,
+.poem-actions-bottom {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  gap: 1rem;
+}
+
+.reading-mode-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 107, 53, 0.1);
+  border: 2px solid #ff6b35;
+  border-radius: 8px;
+  color: #ff6b35;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.reading-mode-button:hover {
+  background: #ff6b35;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.reading-mode-button:active {
+  transform: translateY(0);
+}
+
+.reading-mode-button svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .poem-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .poem-card.expanded {
+    padding: 1.75rem;
+  }
+
+  .poem-card.reading-mode {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .poem-title {
+    font-size: 1.25rem;
+  }
+
+  .poem-card.expanded .poem-title {
+    font-size: 1.625rem;
+  }
+
+  .poem-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .poem-line {
+    font-size: 1rem;
+  }
+
+  .expand-button {
+    padding: 0.375rem;
+  }
+
+  .expand-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .reading-mode-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}

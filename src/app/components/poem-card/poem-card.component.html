@@ -1,0 +1,41 @@
+<div class="poem-card" *ngIf="poem" [class.expanded]="isExpanded" [class.reading-mode]="isReadingMode">
+  <div class="poem-header" (click)="toggleExpanded()">
+    <div class="poem-header-content">
+      <h2 class="poem-title" [innerHTML]="highlightText(poem.title)"></h2>
+      <div class="poem-meta">
+        <span class="poem-author" [innerHTML]="highlightText(poem.author)"></span>
+        <span class="poem-linecount">{{ poem.linecount }} lines</span>
+      </div>
+      <div *ngIf="!isExpanded" class="poem-preview">
+        {{ getPreviewLines() }}
+      </div>
+    </div>
+    <button class="expand-button" (click)="$event.stopPropagation(); toggleExpanded()" [attr.aria-expanded]="isExpanded" [attr.aria-label]="isExpanded ? 'Collapse poem' : 'Expand poem'">
+      <svg class="expand-icon" [class.expanded]="isExpanded" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="poem-body" *ngIf="isExpanded">
+    <div class="poem-actions" *ngIf="!isReadingMode">
+      <button class="reading-mode-button" (click)="toggleReadingMode()" title="Enter reading mode">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 5H17M3 10H17M3 15H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Reading Mode
+      </button>
+    </div>
+    <div class="poem-content" [class.reading-mode-active]="isReadingMode">
+      <p *ngFor="let line of poem.lines; trackBy: trackByIndex" class="poem-line" [innerHTML]="highlightText(line || ' ')"></p>
+    </div>
+    <div class="poem-actions-bottom" *ngIf="isReadingMode">
+      <button class="reading-mode-button" (click)="toggleReadingMode()" title="Exit reading mode">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 5L10 10L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Exit Reading Mode
+      </button>
+    </div>
+  </div>
+</div>
+

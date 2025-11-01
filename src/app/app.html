@@ -1,0 +1,28 @@
+<div class="app-container">
+  <header class="app-header">
+    <div class="app-header-left">
+      <img src="https://www.bluestaq.com/wp-content/uploads/2023/06/bluestaq-logo-white.svg" alt="Bluestaq Logo" class="bluestaq-logo" onerror="this.style.display='none'">
+      <h1 class="app-title">The Poet</h1>
+    </div>
+    <p class="app-subtitle">Discover poetry from the Poetry Database</p>
+  </header>
+
+  <main class="app-main">
+    <app-search 
+      (poemsFound)="onPoemsFound($event)"
+      (searchError)="onSearchError($event)">
+    </app-search>
+
+    <div *ngIf="errorMessage" class="error-message">
+      <div class="error-icon">⚠️</div>
+      <h3>Error</h3>
+      <p>{{ errorMessage }}</p>
+    </div>
+
+    <app-poem-list [poems]="poems" [searchTerm]="currentSearchTerm"></app-poem-list>
+</main>
+
+  <footer class="app-footer">
+    <p>A Bluestaq take home challenge, utilizes <a href="https://poetrydb.org/" target="_blank" rel="noopener">PoetryDB</a></p>
+  </footer>
+</div>

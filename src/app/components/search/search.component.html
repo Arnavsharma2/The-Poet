@@ -1,0 +1,33 @@
+<div class="search-container">
+  <div class="search-box">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (keyup.enter)="onSearch()"
+      placeholder="Search by author or title..."
+      class="search-input"
+      [disabled]="isLoading"
+    />
+    <div class="search-actions">
+      <button
+        (click)="onSearch()"
+        class="search-button"
+        [disabled]="isLoading || !searchQuery.trim()"
+      >
+        <span *ngIf="!isLoading">Search</span>
+        <span *ngIf="isLoading" class="loading-text">Searching...</span>
+      </button>
+      <button
+        (click)="onClear()"
+        class="clear-button"
+        [disabled]="isLoading"
+      >
+        Clear
+      </button>
+    </div>
+  </div>
+  <div *ngIf="isLoading" class="loading-indicator">
+    <div class="spinner"></div>
+  </div>
+</div>
+

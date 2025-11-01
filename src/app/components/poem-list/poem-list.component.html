@@ -1,0 +1,17 @@
+<div class="poem-list-container">
+  <div *ngIf="poems.length === 0" class="empty-state">
+    <h3>No poems found</h3>
+    <p>Try searching for an author or poem title to get started.</p>
+  </div>
+  
+  <div *ngIf="poems.length > 0" class="poem-list-header">
+    <h2>Found {{ poems.length }} poem{{ poems.length !== 1 ? 's' : '' }}</h2>
+  </div>
+  
+  <div *ngIf="poems.length > 0" class="poem-grid">
+    <div *ngFor="let poem of poems; trackBy: trackByPoem; let i = index" class="poem-card-wrapper">
+      <app-poem-card [poem]="poem" [searchTerm]="searchTerm"></app-poem-card>
+    </div>
+  </div>
+</div>
+
